@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour {
 
+	public GameObject explosionPrefab;
+	
 	// Update is called once per frame
 	void Update () {
 		transform.Translate (0, 0.2f, 0);
@@ -14,6 +16,8 @@ public class BulletController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
+		Instantiate (explosionPrefab, transform.position, Quaternion.identity);
+		
 		Destroy (coll.gameObject);
 		Destroy (gameObject);
 	}
